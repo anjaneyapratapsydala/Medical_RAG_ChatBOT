@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>🔍 AI Medical Chatbot</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+
+<body>
+    <div class="chat-container">
+        <h1>🩺 AI Medical Assistant</h1>
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <div id="chat-box">
+            {% for msg in messages %}
+                <div class="message {{ msg.role }}">
+                    <strong>{{ msg.role|capitalize }}</strong>
+                    {{ msg.content | safe | nl2br }}
+                </div>
+            {% endfor %}
+        </div>
+
+        <form method="post" action="{{ url_for('index') }}">
+            <textarea name="prompt" placeholder="Ask a medical question..." required></textarea>
+            <button type="submit">Send</button>
+        </form>
+
+        <form method="get" action="{{ url_for('clear_chat') }}">
+            <button type="submit" class="clear-btn">Clear Chat</button>
+        </form>
+    </div>
+</body>
+</html>

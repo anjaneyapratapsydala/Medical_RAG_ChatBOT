@@ -1,0 +1,67 @@
+############################
+# Python cache & compiled
+############################
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+############################
+# Virtual Environment
+############################
+venv/
+env/
+.venv/
+
+############################
+# Environment variables
+############################
+.env
+.env.*
+
+############################
+# Logs
+############################
+logs/
+*.log
+
+############################
+# Vector stores / embeddings
+# (FAISS indexes are large & regenerable)
+############################
+vectorstore/
+*.faiss
+*.pkl
+
+############################
+# Data files (raw PDFs, docs)
+# Uncomment if data should NOT be versioned
+############################
+data/
+# *.pdf
+
+############################
+# Flask / App-specific
+############################
+instance/
+*.sqlite3
+
+############################
+# Build / Packaging artifacts
+############################
+build/
+dist/
+*.egg-info/
+Medical_RAG_Chatbot-egg-info/
+
+############################
+# VS Code / IDE
+############################
+.vscode/
+.idea/
+
+############################
+# OS files
+############################
+.DS_Store
+Thumbs.db
