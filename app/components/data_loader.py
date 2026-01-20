@@ -17,6 +17,10 @@ def process_and_store_pdfs():
         text_chunks = create_text_chunks(documents)
 
         save_vector_store(text_chunks)
+
+        for i, doc in enumerate(documents[:3]):
+         logger.info(f"Doc {i} length:", len(doc.page_content))
+         logger.info(doc.page_content[:300])
  
         logger.info("Vector store created and saved successfully.")
 

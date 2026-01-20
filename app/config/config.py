@@ -8,9 +8,9 @@ DB_FAISS_PATH = "vectorstore/db_faiss"
 
 DATA_PATH = "data/"
 
-CHUNK_SIZE = 200
+CHUNK_SIZE = 600
 
-CHUNK_OVERLAP = 50
+CHUNK_OVERLAP = 150
 
 groq_api_key = os.getenv("GROQ_API_KEY")
 
