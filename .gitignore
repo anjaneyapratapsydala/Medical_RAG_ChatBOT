@@ -29,9 +29,6 @@ logs/
 # Vector stores / embeddings
 # (FAISS indexes are large & regenerable)
 ############################
-vectorstore/
-*.faiss
-*.pkl
 
 ############################
 # Data files (raw PDFs, docs)
@@ -65,3 +62,4 @@ Medical_RAG_Chatbot-egg-info/
 ############################
 .DS_Store
 Thumbs.db
+
