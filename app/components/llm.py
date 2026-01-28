@@ -15,7 +15,7 @@ def load_llm(model_name: str = "llama-3.1-8b-instant", groq_api_key: str = groq_
             groq_api_key=groq_api_key,
             model_name=model_name,
             temperature=0.3,
-            max_tokens=1024,
+            max_tokens=512,
         )
         
         logger.info("Successfully loaded HuggingFace LLM model.")

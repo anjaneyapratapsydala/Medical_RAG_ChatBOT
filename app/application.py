@@ -24,7 +24,13 @@ def nl2br(value):
 
 app.jinja_env.filters["nl2br"] = nl2br
 
-
+def clean_output(text: str) -> str:
+    return (
+        text.replace("<br><br>", "\n\n")
+            .replace("<br />", "\n")
+            .replace("<br>", "\n")
+            .strip()
+    )
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -42,6 +48,7 @@ def index():
                 qa_chain = create_retriever_qa_chain()
                 logger.info("Invoking QA chain.")
                 response = qa_chain.invoke(user_input)
+                response = clean_output(response)
                 logger.info("Successfully invoked QA chain.")
                 messages.append({
                     "role": "assistant",

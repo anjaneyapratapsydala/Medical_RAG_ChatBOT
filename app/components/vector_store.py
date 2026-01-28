@@ -1,6 +1,6 @@
 from langchain_community.vectorstores import FAISS
 import os
-
+import re
 from app.components.embeddings import get_embeddings as get_embeddings_model
 
 from app.common.logger import get_logger
@@ -9,6 +9,9 @@ from app.common.custom_exception import CustomException
 from app.config.config import DB_FAISS_PATH
 
 logger = get_logger(__name__)
+
+def clean_doc(text):
+    return re.sub(r"<br\s*/?>", "\n", text)
 
 def load_vector_store():
     try:
@@ -38,6 +41,9 @@ def save_vector_store(text_chunks):
             raise CustomException("No text chunks provided to create vector store.")
         
         logger.info("Creating FAISS vector store from text chunks.")
+        
+        for doc in text_chunks:
+            doc.page_content = clean_doc(doc.page_content)
 
         embedding_model = get_embeddings_model()
 
